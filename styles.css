@@ -1,0 +1,29 @@
+
+body{
+    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
+}
+.parent_div{
+    margin-top: 28vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.child_div{
+    text-align: center;
+}
+.main_ul{
+    padding: 0;
+}
+.main_li{
+    display: inline;
+    margin-inline: 3em;
+}
+a{
+    text-decoration: none;
+    color: rgb(74, 74, 74);
+}
+a:hover{
+    text-decoration: underline;
+    font-style: italic  ;
+}
