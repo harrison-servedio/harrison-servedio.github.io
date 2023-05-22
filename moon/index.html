@@ -5,6 +5,25 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>The Moon is Leaving</title>
+        <style>
+            #moon {
+                font-size: 40px;
+                text-align: center;
+                margin-top: 20%;
+                font-weight: bold;
+            }
+            #author {
+                font-size: 14px;
+                text-align: center;
+                margin-top: 25%;
+            }
+            p {
+                font-family: 'Courier New', Courier, monospace;
+            }
+            a {
+                color: black;
+            }
+        </style>
         
     </head>
     <body>
@@ -19,23 +38,5 @@
         moonDistance = Math.round(moonDistance * 1000) / 1000
         document.getElementById("moon").innerHTML = "The moon is " + moonDistance + "cm further away from earth than it was on May 21, 2023 at 10:00pm EST";
     </script>
-    <style>
-        #moon {
-            font-size: 40px;
-            text-align: center;
-            margin-top: 20%;
-            font-weight: bold;
-        }
-        #author {
-            font-size: 14px;
-            text-align: center;
-            margin-top: 25%;
-        }
-        p {
-            font-family: 'Courier New', Courier, monospace;
-        }
-        a {
-            color: black;
-        }
-    </style>
+
 </html>
