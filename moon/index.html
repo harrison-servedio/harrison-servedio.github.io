@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>The Moon is Leaving</title>
+        
+    </head>
+    <body>
+    <p id="moon"></p>
+    <p id="author">This page was made by <a href="https://harrisonserved.io">Harrison Servedio</a></p>
+    </body>
+
+    <script>
+        const maytwentyFirst = new Date('May 21, 2023 22:00:00 EST+00:00');
+        var timeSince = (Date.now() - maytwentyFirst.getTime())/(3.154*10**10);
+        var moonDistance = 3.78*timeSince
+        moonDistance = Math.round(moonDistance * 1000) / 1000
+        document.getElementById("moon").innerHTML = "The moon is " + moonDistance + "cm further away from earth than it was on May 21, 2023 at 10:00pm EST";
+    </script>
+    <style>
+        #moon {
+            font-size: 40px;
+            text-align: center;
+            margin-top: 20%;
+            font-weight: bold;
+        }
+        #author {
+            font-size: 20px;
+            text-align: center;
+            margin-top: 20%;
+        }
+        p {
+            font-family: 'Courier New', Courier, monospace;
+        }
+        a {
+            color: black;
+        }
+    </style>
+</html>
