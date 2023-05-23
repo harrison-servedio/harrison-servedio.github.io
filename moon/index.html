@@ -31,6 +31,7 @@
             }
         </style>
         <script>
+            const r = 4;
             // const maytwentyFirst = new Date('May 21, 2023 22:00:00 EST+00:00'); // Didnt Work on ios
             var dateString = "2023-05-21 21:00:00 EST";
             // Treats the string as local time
@@ -38,7 +39,7 @@
 
             var timeSince = (Date.now() - d.getTime())/(3.154*10**10);
             var moonDistance = 3.78*timeSince
-            moonDistance = Math.round(moonDistance * 10000) / 10000
+            moonDistance = Math.round(moonDistance * 10**r) / 10**r
         </script>
         
     </head>
@@ -58,7 +59,15 @@
     </body>
     
     <script>
-        document.getElementById("moon").innerHTML = "The moon is " + moonDistance + "cm further away from earth than it was on May 21, 2023 at 10:00pm EST";
+        var a = document.getElementById("moon");
+        a.innerHTML = "The moon is " + moonDistance + "cm further away from earth than it was on May 21, 2023 at 10:00pm EST";
+        function update(){
+            timeSince = (Date.now() - d.getTime())/(3.154*10**10);
+            moonDistance = 3.78*timeSince
+            moonDistance = (Math.round(moonDistance * 10**r) / 10**r).toFixed(r);
+            a.innerHTML = "The moon is " + moonDistance + "cm further away from earth than it was on May 21, 2023 at 10:00pm EST";
+        }
+        setInterval(update, 10000);
     </script>
 
 </html>
