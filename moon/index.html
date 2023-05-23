@@ -23,6 +23,12 @@
             a {
                 color: black;
             }
+            .center {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                width: 50%;
+            }
         </style>
         <script>
             // const maytwentyFirst = new Date('May 21, 2023 22:00:00 EST+00:00'); // Didnt Work on ios
@@ -47,9 +53,10 @@
 </script>
     <body>
     <p id="moon"></p>
+    <img src="moonPhoto.JPG" alt="moon" style="width:auto;" class="center">
     <p id="author">This page was made by <a href="https://harrisonserved.io">Harrison Servedio</a></p>
     </body>
-
+    
     <script>
         document.getElementById("moon").innerHTML = "The moon is " + moonDistance + "cm further away from earth than it was on May 21, 2023 at 10:00pm EST";
     </script>
