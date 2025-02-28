@@ -34,7 +34,7 @@ function setUp(){
     var b2 = ["red", "yellow", "blue", "black", "purple", "green", "orange"];
     shuffle(b1);
     shuffle(b2);
-    while (checkCorrect(b1, b2) > 3){
+    while (checkCorrect(b1, b2) > 2){
         shuffle(b2);
     };
     return [b1, b2]
