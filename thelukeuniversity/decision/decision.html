@@ -1,0 +1,9 @@
+<!-- The following paragraph tag randomly displays true or false -->
+
+<p id="decision"></p>
+<script>
+    // Randomly decide if the user is accepted or rejected
+    var decision = Math.random() < 0.01 ? "Congratulations! You have been accepted to The Luke University!" : "We regret to inform you that you have been rejected from The Luke University.";
+    document.getElementById("decision").innerHTML = decision;
+    
+</script>
