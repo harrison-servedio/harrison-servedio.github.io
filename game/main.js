@@ -46,7 +46,7 @@ function isNumeric(str) {
 };
 
 function startGame(){
-    const startTime = performance.now();
+    let startTime = performance.now();
 
     var set = setUp();
     var b1 = set[0];
@@ -60,77 +60,46 @@ function startGame(){
 
     var pivot = "";
 
+    // Select a circle, or swap it with the previously selected one
+    function select(i){
+        if (pivot == ""){
+            pivot = String(i);
+            return;
+        };
+        const temp = b1[Number(pivot)];
+        b1[Number(pivot)] = b1[i];
+        b1[i] = temp;
+
+        var correct = checkCorrect(b1, b2);
+        document.getElementById("title").innerHTML = "Number correct: " + String(correct);
+
+        updateBoard(b1);
+        pivot = "";
+        if (correct == 7){
+            const endTime = performance.now();
+            const executionTime = endTime - startTime;
+            alert("Your time was " + String(executionTime/1000) + " seconds");
+
+            set = setUp();
+            b1 = set[0];
+            b2 = set[1];
+
+            updateBoard(b1);
+
+            correct = checkCorrect(b1, b2);
+            document.getElementById("title").innerHTML = "Number correct: " + String(correct);
+            startTime = performance.now();
+        };
+    };
+
     function click(e){
         if (isNumeric(e.target.id)) {
-            if (pivot == ""){
-                pivot = e.target.id;
-            }
-            else {
-                const temp = b1[Number(pivot)];
-                b1[Number(pivot)] = b1[Number(e.target.id)];
-                b1[Number(e.target.id)] = temp;
-
-                var correct = checkCorrect(b1, b2);
-                document.getElementById("title").innerHTML = "Number correct: " + String(correct);
-
-                updateBoard(b1);
-                pivot = "";
-                if (correct == 7){
-                    const endTime = performance.now();
-                    const executionTime = endTime - startTime;
-                    alert("Your time was " + String(executionTime/1000) + " seconds");
-
-                    set = setUp();
-                    b1 = set[0];
-                    b2 = set[1];
-                
-                    
-                    updateBoard(b1);
-                    
-                    var correct = checkCorrect(b1, b2);
-                    document.getElementById("title").innerHTML = "Number correct: " + String(correct);
-                    startTime = performance.now();
-                };
-                
-            };
+            select(Number(e.target.id));
         };
     };
     function keyDown(e){
-        if (isNumeric(e.key)){
-            if (1 <= Number(e.key) <= 7){
-                if (pivot == ""){
-                    pivot = String(Number(e.key)-1);
-                }
-                else {
-                    const temp = b1[Number(pivot)];
-                    b1[Number(pivot)] = b1[Number(e.key)-1];
-                    b1[Number(e.key)-1] = temp;
-    
-                    var correct = checkCorrect(b1, b2);
-                    document.getElementById("title").innerHTML = "Number correct: " + String(correct);
-    
-                    updateBoard(b1);
-                    pivot = "";
-                    // Check the num and update the board
-                    if (correct == 7){
-                        const endTime = performance.now();
-                        const executionTime = endTime - startTime;
-                        alert("Your time was " + String(executionTime/1000) + " seconds");
-    
-                        set = setUp();
-                        b1 = set[0];
-                        b2 = set[1];
-                    
-                        
-                        updateBoard(b1);
-                        
-                        var correct = checkCorrect(b1, b2);
-                        document.getElementById("title").innerHTML = "Number correct: " + String(correct);
-                        startTime = performance.now();
-    
-                    };
-                };
-            };
+        if (isNumeric(e.key) && Number(e.key) >= 1 && Number(e.key) <= 7){
+            select(Number(e.key) - 1);
         };
     };
 
